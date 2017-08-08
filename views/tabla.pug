@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+      h1.display-4.m-b-2 Datos de la tabla
+
+      table.table.table-striped
+        thead
+          tr
+            th clave
+            th nombre
+            th vendedor
+            th precio
+            th calificación
+          tbody
+            
+            each valor in datos
+              tr
+              td=valor.clave
+              td=valor.nombre
+              td=valor.vendedor
+              td=valor.precio
+              td=valor.calif
+
+            
+           

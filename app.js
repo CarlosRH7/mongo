@@ -4,21 +4,31 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-
+var app =express();
+//para la base de datos de mongo
 var mongo = require('mongodb');
 var monk =require('monk');
-var db = monk('localhost:27017/');
+var db = monk('localhost:27017/miPrimerDB');
+
+
+app.use(function(req, res, next){
+  req.db = db;
+  //no se queda dentro de la fución
+  next();
+});
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-//var tabla = reuqire('./routers/tabla');
+var tabla = require('./routes/tabla');
 
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -30,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-//app.use('/tabla', tabla);
+app.use('/tabla', tabla);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
