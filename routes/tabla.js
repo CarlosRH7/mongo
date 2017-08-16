@@ -8,11 +8,8 @@ router.get('/', function(req, res, next) {
   var db = req.db;
   var refacciones = db.get('refacciones');
   refacciones.find({},'-_id', function(e, docs){
-  
-  //se envian los datos para renderizar
-  res.render('tabla', { datos:docs });
-
-
+    //se envian los datos para renderizar
+    res.render('tabla', { datos:docs });
   });
 
 });

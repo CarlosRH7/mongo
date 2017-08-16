@@ -3,26 +3,30 @@ extends layout
 block content
   .main.container
     .row
-      .col-md-6.col-md-offset-3
-      h1.display-4.m-b-2 Datos de la tabla
-
-      table.table.table-striped
-        thead
-          tr
-            th clave
-            th nombre
-            th vendedor
-            th precio
-            th calificación
-          tbody
-            
-            each valor in datos
-              tr
-              td=valor.clave
-              td=valor.nombre
-              td=valor.vendedor
-              td=valor.precio
-              td=valor.calif
+      .col-md-10.col-md-offset-1
+        h1.display-4.m-b-2 Datos de la tabla
+        //P #{datos[0].nombre}
+        table.table.table-striped
+          thead
+            tr
+              th Clave
+              th Nombre
+              th Vendedor
+              th Precio
+              th Calificación
+              th Compon
+            tbody
+              
+              each valor in datos
+                tr
+                td=valor.clave
+                td=valor.nombre
+                td=valor.vendedor
+                td=valor.precio
+                td=valor.calif
+                td
+                  each val in valor.compon
+                    li=val
 
             
            

@@ -1,5 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  //- h1= title
+  //- p Welcome to #{title}
+  .col-md-4.col-md-offset-4
+    h1 Iniciar sesión
+    form(method="POST", action='/bienvenido')
+      .form-group
+        input#usuario(placeholder='Ingresa el usuario', class="form-control", name="usuario", type="", required="true")
+      .form-group
+        input#password(placeholder='Ingresa la contraseña', class="form-control", type="password", name="password", required="true")
+      .form-group
+        button(type="submit", class="btn btn-danger") Ingresar
+
+
