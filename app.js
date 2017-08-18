@@ -22,6 +22,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var tabla = require('./routes/tabla');
 var bienvenido = require('./routes/bienvenido');
+var alta = require('./routes/alta');
 
 
 // view engine setup
@@ -43,6 +44,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/tabla', tabla);
 app.use('/bienvenido', bienvenido);
+app.use('/alta', alta);
 
 
 // catch 404 and forward to error handler
