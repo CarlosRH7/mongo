@@ -12,5 +12,11 @@ block content
         input#password(placeholder='Ingresa la contraseña', class="form-control", type="password", name="password", required="true")
       .form-group
         button(type="submit", class="btn btn-danger") Ingresar
+      .form-group
+        .bg-error #{mensaje}
+        if(!validado)
+          .text-center
+            a.btn.btn-warning(href='/alta') Dar de alta
+
 
 

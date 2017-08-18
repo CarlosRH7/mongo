@@ -2,20 +2,32 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.post('/', function(req, res, next) {
+router.post('/', function (req, res, next) {
     var db = req.db;
     var usuarios = db.get('usuarios');
-
-    usuarios.find({usuario:req.usuario}, function(e, docs){
-        if(docs.length>0){
-            res.render('bienvenido', { title: 'hola usuario' });
-        }else{
-            res.render('bienvenido', { title: 'No bienvenido' });
-        }
-    });
-    // refacciones.find({},'-_id', function(e, docs){
-    //     //se envian los datos para renderizar
-    //     res.render('tabla', { datos:docs });
+    // usuarios.count({
+    //     usuario: req.body.usuario,
+    //     password: req.body.password
+    // }).then(function (cuenta) {
+    //     if (cuenta > 0) {
+    //         res.render('bienvenido');
+    //     }else{
+    //         res.render('index',{
+    //             mensaje:"Error!: Usuario no encontrado"
+    //         });
+    //     }
+    //     db.close();
     // });
+    usuarios.find({
+        usuario:req.body.usuario,
+        password:req.body.password
+    }).then(function(docs){
+       if(Object.keys(docs).length>0){
+            res.render('bienvenido',{datos:docs});
+       }else{
+            res.render('index',{mensaje:'No se encontro el usuario',validado:false});
+
+       } 
+    })
 });
 module.exports = router;
